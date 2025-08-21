@@ -1,0 +1,7 @@
+{
+    "ecr": {
+        "repository_name": "snf-atenc-generate-events-repo",
+        "image_name": "snf-atenc-generate-events"
+    }
+
+}

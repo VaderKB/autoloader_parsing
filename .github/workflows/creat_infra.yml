@@ -21,3 +21,17 @@ jobs:
               uses: actions/checkout@v5
             - name: Create image
               run: sh ./push_image.sh
+            - name: Setup terraform
+              uses: hashicorp/setup-terraform@v3
+              with:
+                terraform_version: "1.10.1"
+            - name: Create infra
+              run: |
+                cd iac
+                terraform init
+                terraform apply -auto-approve
+            - name: destroy infra
+              if: always()
+              run: |
+                cd iac
+                terraform destroy -auto-approve 
