@@ -1,6 +1,7 @@
 name: Create AWS Infra
 on: 
     workflow_dispatch:
+    push:
 run-name: Create aws infra
 jobs:
     create-infra:
@@ -14,5 +15,7 @@ jobs:
               with: 
                 aws-region: us-east-1
                 role-to-assume: ${{ secrets.AWS_OIDC_ROLE }}
-            - name: List files
-              run: aws s3 ls
+            - name: Checkout code
+              uses: actions/checkout@v5
+            - name: Create image
+              run: sh ./push_image.sh
