@@ -13,7 +13,7 @@ else
 fi
 
 # Get creds
-aws ecr get-login-password --region "us-east-1" --profile dbxaws| docker login --username AWS --password-stdin 483151609062.dkr.ecr.us-east-1.amazonaws.com
+aws ecr get-login-password --region "us-east-1" | docker login --username AWS --password-stdin 483151609062.dkr.ecr.us-east-1.amazonaws.com
 
 # Tag image
 docker tag $image_name:latest 483151609062.dkr.ecr.us-east-1.amazonaws.com/$ecr_repo_name:latest
