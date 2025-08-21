@@ -1,8 +1,8 @@
 #!/bin/bash
 
-image_name=$(jq '.ecr.image_name' config.json)
+image_name=$(jq -r '.ecr.image_name' config.json)
 #"snf-atenc-generate-events"
-ecr_repo_name=$(jq '.ecr.repository_name' config.json)
+ecr_repo_name=$(jq -r '.ecr.repository_name' config.json)
 #"snf-atenc-generate-events-repo"
 
 docker build -t $image_name .
