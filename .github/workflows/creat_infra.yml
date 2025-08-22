@@ -15,8 +15,6 @@ jobs:
               with: 
                 aws-region: us-east-1
                 role-to-assume: ${{ secrets.AWS_OIDC_ROLE }}
-            - name: Get cli version
-              run: aws --version
             - name: Checkout code
               uses: actions/checkout@v5
             - name: Create image
@@ -30,8 +28,3 @@ jobs:
                 cd iac
                 terraform init
                 terraform apply -auto-approve
-            - name: destroy infra
-              if: always()
-              run: |
-                cd iac
-                terraform destroy -auto-approve 

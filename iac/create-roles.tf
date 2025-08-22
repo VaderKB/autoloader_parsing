@@ -1,8 +1,8 @@
 resource "aws_iam_role" "lambda_role" {
   name = "${var.prefix}-${var.lambda_role_name}"
   assume_role_policy = jsonencode({
-    version   = local.policy.lambda.trust_policy.Version
-    statement = local.policy.lambda.trust_policy.Statement
+    Version = local.policy.lambda.trust_policy.Version
+    Statement = local.policy.lambda.trust_policy.Statement
   })
 }
 
@@ -16,4 +16,12 @@ resource "aws_iam_role_policy" "lambda_role_policy" {
     Statement = each.value.Statement
   })
 
+}
+
+output value1 {
+    value = local.policy.lambda.trust_policy.Version
+}
+
+output value2 {
+    value = local.policy.lambda.trust_policy.Statement
 }
